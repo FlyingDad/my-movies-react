@@ -1,4 +1,14 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+	text-align: center;
+	width: 90%;
+	margin: 0 auto;
+}
 
+.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, rgb(9, 4, 77), #1a75c0, rgb(9, 4, 77));
+  background-image: -moz-linear-gradient(left, rgb(9, 4, 77), #1a75c0, rgb(9, 4, 77));
+  background-image: -ms-linear-gradient(left, rgb(9, 4, 77), #1a75c0, rgb(9, 4, 77));
+  background-image: -o-linear-gradient(left, rgb(9, 4, 77), #1a75c0, rgb(9, 4, 77)); 
+}

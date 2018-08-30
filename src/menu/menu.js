@@ -6,7 +6,7 @@ class menu extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			year: 2001
+			year: 2001,
 		}
 		this.onYearChange = this.onYearChange.bind(this)
 		this.onSubmitYear = this.onSubmitYear.bind(this)
@@ -18,7 +18,8 @@ class menu extends Component {
 
 	onSubmitYear(event) {
 		event.preventDefault()
-		console.log(this.state.year)
+		//console.log(this.state.year)
+		this.props.submitYear(this.state.year)
 	}
 
 	render() {
