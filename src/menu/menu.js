@@ -6,7 +6,7 @@ class menu extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			year: 2001,
+			year: 1983,
 		}
 		this.onYearChange = this.onYearChange.bind(this)
 		this.onSubmitYear = this.onSubmitYear.bind(this)
@@ -33,7 +33,7 @@ class menu extends Component {
 						id="year" 
 						className="ma2" 
 						onChange={this.onYearChange}
-						value={this.state.value} 
+						value={this.state.year} 
 					/>
 					<input type="submit" value="Submit" />
 				</form>

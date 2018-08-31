@@ -1,5 +1,13 @@
 .movie-container {
 	color: orange;
 	border: 1px solid rgb(83, 97, 228);
-	box-shadow: 3px 3px 2px rgb(12, 69, 87);
+	box-shadow: 2px 2px 6px rgb(12, 69, 87);
+	transition: all 150ms ease-in-out;
+	/* transition-property: all; */
+}
+
+.movie-container:hover {
+	border: 1px solid rgb(144, 152, 223);
+	box-shadow: 1px 1px 1px 2px rgb(144, 152, 223);
+	
 }
