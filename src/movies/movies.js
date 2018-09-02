@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Movie from './movie/movie'
 import axios from 'axios'
+import MovieDetails from './moviedetails/moviedetails';
 
 class Movies extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			response: null
+			response: null,
+			movieSelection: false,
+			movieIndex: null
 		}
 	}
 
@@ -41,34 +44,47 @@ class Movies extends Component {
 	// 	}
 	// }
 
+	onMovieClick(index) {
+		this.setState({movieSelection: true, movieIndex: index})
+		console.log('clicked a movie')
+	}
+
 	render() {
+		
 		return (
-			<div className="flex flex-wrap justify-center">
-				{this.state.response ? (
-					
-					// <p>Movies Found...</p>
-					// <p>adult {m[0].original_title}</p>
-					// </div>
-					this.state.response.map(movie => {
-						return (
-						// <p key={movie.id}>Movie {movie.original_title}</p>
-						<Movie
-							title={movie.title}
-							releaseDate={movie.release_date}
-							summary={movie.overview}
-							posterUrl={movie.poster_path}
-							id={movie.id}
-							key={movie.id}
-						/>
-						)
-					})
-					
-				) : (
-					<p>No Movies</p>
-				)}			
+			<div>
+				{!this.state.movieSelection ? (
+					<div className="flex flex-wrap justify-center">
+						{this.state.response ? (
+							this.state.response.map((movie, index) => {
+								return (
+								// <p key={movie.id}>Movie {movie.original_title}</p>
+								<Movie
+									title={movie.title}
+									releaseDate={movie.release_date}
+									summary={movie.overview}
+									posterUrl={movie.poster_path}
+									id={movie.id}
+									key={movie.id}
+									onSelect={this.onMovieClick.bind(this)}
+									index={index}
+								/>
+								)
+							})						
+						) : (
+							<p>No Movies</p>
+						)}
+					</div>
+				):
+				(
+					<MovieDetails 
+						movie={this.state.response[this.state.movieIndex]}
+					/>
+				)}
 			</div>
-		);
+		)		
 	}
 }
 
 export default Movies;
+
