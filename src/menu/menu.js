@@ -28,7 +28,9 @@ class menu extends Component {
 				<form onSubmit={this.onSubmitYear}>
 					<label htmlFor="year" className="ma2">Select year</label>
 					<input
-					  type="number" 
+						type="number"
+						min="1900"
+						max="2018"
 						name="year" 
 						id="year" 
 						className="ma2" 

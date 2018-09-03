@@ -15,7 +15,7 @@ class Movies extends Component {
 	}
 
 	getMoviesByYear() {
-		axios.get('https://api.themoviedb.org/3/discover/movie?api_key=9309086e9e6e082e5dc104b977f7a960&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=1983')
+		axios.get('https://api.themoviedb.org/3/discover/movie?api_key=9309086e9e6e082e5dc104b977f7a960&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_year=' + this.props.yearSubmitted)
 		.then(response => {
 			//console.log(response.data.results)
 			this.setState({response: response.data.results})
