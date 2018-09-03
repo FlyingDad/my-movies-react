@@ -10,7 +10,8 @@ class Movies extends Component {
 		this.state = {
 			response: null,
 			movieSelection: false,
-			movieIndex: null
+			movieIndex: null,
+			viewDetails: false
 		}
 	}
 
@@ -22,10 +23,6 @@ class Movies extends Component {
 		})
 	}
 
-	// componentDidMount(){
-	// 	console.log('mounted movies')
-	// }
-
 	componentDidUpdate(prevProps) {
 		
 		if(this.props.yearSubmitted !== prevProps.yearSubmitted) {
@@ -36,16 +33,14 @@ class Movies extends Component {
 		}
 	}
 	}
-	// componentWillReceiveProps() {
-	// 	console.log('received props movies', this.props.yearSubmitted)
-	// 	if(this.props.yearSubmitted) {
-	// 		console.log(this.props.yearSubmitted)
-	// 		//this.getMoviesByYear()
-	// 	}
-	// }
+
+	onReturnFromDetails() {
+		console.log('return from details')
+		this.setState({movieSelection: false})
+	}
 
 	onMovieClick(index) {
-		this.setState({movieSelection: true, movieIndex: index})
+		this.setState({movieSelection: true, movieIndex: index, viewDetails: true})
 		console.log('clicked a movie')
 	}
 
@@ -79,6 +74,7 @@ class Movies extends Component {
 				(
 					<MovieDetails 
 						movie={this.state.response[this.state.movieIndex]}
+						onReturnFromDetails={this.onReturnFromDetails.bind(this)}
 					/>
 				)}
 			</div>

@@ -7,6 +7,10 @@ class MovieDetails extends Component {
 		console.log(this.props.movie)
 		return (
 			<div className="flex flex-column items-center">
+				<p
+					id="return"
+					onClick={this.props.onReturnFromDetails}
+				>Back</p>
 				<h1>{this.props.movie.original_title}</h1>
 				<img src={'https://image.tmdb.org/t/p/w500' + this.props.movie.backdrop_path} className="" alt=""/>
 				<p>Released: {this.props.movie.release_date}</p>

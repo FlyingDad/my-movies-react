@@ -1,3 +1,14 @@
 #menu {
 	margin: 30px auto;
 }
+
+#new-search {
+	margin: 30px auto;
+	width: 135px;
+	margin-top: 20px;
+	padding: 3px 5px;
+	color: rgb(200, 200, 245);
+	border: 1px solid rgb(12, 134, 98);
+	background-color: rgb(2, 51, 73);
+	border-radius: 2px;
+}
