@@ -23,15 +23,29 @@ class Movies extends Component {
 		})
 	}
 
-	componentDidUpdate(prevProps) {
-		
-		if(this.props.yearSubmitted !== prevProps.yearSubmitted) {
-		if(this.props.yearSubmitted) {
-			console.log(this.props.yearSubmitted)
-			this.getMoviesByYear()
-			console.log('did update movies')
-		}
+	getMoviesByPopularity() {
+		axios.get('https://api.themoviedb.org/3/discover/movie?api_key=9309086e9e6e082e5dc104b977f7a960&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
+		.then(response => {
+			console.log(response.data.results)
+			this.setState({response: response.data.results})
+		})
 	}
+
+	componentDidUpdate(prevProps) {
+
+		if(this.props.queryType !== prevProps.queryType) {
+			if(this.props.queryType) {
+				this.getMoviesByPopularity()
+			}
+		}
+		
+		else if(this.props.yearSubmitted !== prevProps.yearSubmitted) {
+			if(this.props.yearSubmitted) {
+				console.log(this.props.yearSubmitted)
+				this.getMoviesByYear()
+				console.log('did update movies')
+			}
+		}
 	}
 
 	onReturnFromDetails() {

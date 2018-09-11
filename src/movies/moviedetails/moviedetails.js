@@ -11,7 +11,7 @@ class MovieDetails extends Component {
 					id="return"
 					onClick={this.props.onReturnFromDetails}
 				>Back</p>
-				<h1>{this.props.movie.original_title}</h1>
+				<h1>{this.props.movie.title}</h1>
 				<img src={'https://image.tmdb.org/t/p/w500' + this.props.movie.backdrop_path} className="" alt=""/>
 				<p>Released: {this.props.movie.release_date}</p>
 				<p>Average rating: {this.props.movie.vote_average}</p>

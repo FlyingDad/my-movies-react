@@ -10,19 +10,26 @@ class menu extends Component {
 			year: 1983,
 			submitted: false
 		}
-		this.onYearChange = this.onYearChange.bind(this)
-		this.onSubmitYear = this.onSubmitYear.bind(this)
+		this.favoriteByYear = this.favoriteByYear.bind(this)
+		this.onSubmitFavByYear = this.onSubmitFavByYear.bind(this)
+		this.onPopularSubmit = this.onPopularSubmit.bind(this)
 	}
 
-	onYearChange(event){
+	favoriteByYear(event){
 		this.setState({year: event.target.value})
 	}
 
-	onSubmitYear(event) {
+	onSubmitFavByYear(event) {
 		event.preventDefault()
 		//console.log(this.state.year)
 		this.setState({submitted: true})
 		this.props.submitYear(this.state.year)
+	}
+
+	onPopularSubmit(event) {
+		event.preventDefault()
+		this.setState({submitted: true})
+		this.props.queryType()
 	}
 
 	onRefresh() {
@@ -34,21 +41,45 @@ class menu extends Component {
 		return (
 			<div>
 				{!this.state.submitted ? (
-					<div id="menu" className="flex justify-start w-50 bg-navy ba b--green br2">
-					<form onSubmit={this.onSubmitYear}>
-						<label htmlFor="year" className="ma2">Select year</label>
-						<input
-							type="number"
-							min="1900"
-							max="2018"
-							name="year" 
-							id="year" 
-							className="ma2" 
-							onChange={this.onYearChange}
-							value={this.state.year} 
-						/>
-						<input type="submit" value="Submit" />
-					</form>
+					<div>
+						<div id="menu" className="flex justify-around items-center w-75 bg-navy ba bg-green br2" >
+						<h3>Popular Movies</h3>
+						<div>
+							<form onSubmit={this.onPopularSubmit} className="">
+								{/* <label htmlFor="year" className="ma2">Select year</label> */}
+								{/* <input
+									type="number"
+									min="1900"
+									max="2018"
+									name="year" 
+									id="year" 
+									className="ma2" 
+									onChange={this.favoriteByYear}
+									value={this.state.year} 
+								/> */}
+								<input type="submit" value="Submit" />
+							</form>
+						</div>
+				</div>
+						<div id="menu" className="flex justify-around items-center w-75 bg-navy ba bg-green br2" >
+							<h3>Favorite Movies by Year</h3>
+							<div>
+								<form onSubmit={this.onSubmitFavByYear} className="">
+									{/* <label htmlFor="year" className="ma2">Select year</label> */}
+									<input
+										type="number"
+										min="1900"
+										max="2018"
+										name="year" 
+										id="year" 
+										className="ma2" 
+										onChange={this.favoriteByYear}
+										value={this.state.year} 
+									/>
+									<input type="submit" value="Submit" />
+								</form>
+							</div>
+					</div>
 				</div>):
 				(
 					<Submitted

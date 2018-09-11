@@ -9,13 +9,18 @@ class App extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			yearSubmitted: null
+			yearSubmitted: null,
+			queryType: null
 		}
 	}
 
 	yearsubmitted(year) {
 		// console.log(year)
 		this.setState({yearSubmitted: year})
+	}
+
+	popular() {
+		this.setState({queryType: 'popular'})
 	}
 
   render() {
@@ -25,10 +30,12 @@ class App extends Component {
 			<Header></Header>
 			<Menu
 				submitYear={this.yearsubmitted.bind(this)}
+				queryType={this.popular.bind(this)}
 			/>
 			<hr className="style14" />
 			<Movies
 				yearSubmitted={this.state.yearSubmitted}
+				queryType={this.state.queryType}
 			/>
       </div>
     );
